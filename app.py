@@ -1,5 +1,4 @@
 import os
-import json
 import pandas as pd
 from dash import Dash, dcc, html, Input, Output, State, callback_context
 import dash_bootstrap_components as dbc
@@ -7,6 +6,7 @@ import plotly.express as px
 
 # Initialize the app
 app = Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server  # Expose server for Gunicorn
 
 # File paths
 COURSE_CATALOG_FILE = "MSIS CATALOG SPREADSHEET - Sheet1 (2).csv"
@@ -184,13 +184,6 @@ def update_charts_and_status(add_clicks, grad_clicks, course_code):
             )
 
     return notifications_content, pie_chart, bar_chart, column_chart, achievements_html
-
-@app.callback(
-    Output("page-content", "className"),
-    Input("dark-mode-toggle", "value"),
-)
-def toggle_dark_mode(is_dark_mode):
-    return "dark-mode" if is_dark_mode else "light-mode"
 
 # Run the server
 if __name__ == "__main__":
