@@ -186,5 +186,8 @@ def update_charts_and_status(add_clicks, grad_clicks, course_code):
     return notifications_content, pie_chart, bar_chart, column_chart, achievements_html
 
 # Run the server
+server = app.server  # Expose the server for gunicorn
+
 if __name__ == "__main__":
     app.run_server(debug=True)
+
