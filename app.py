@@ -9,7 +9,7 @@ import plotly.express as px
 app = Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # File paths
-COURSE_CATALOG_FILE = r"C:\Users\alici\Desktop\Degree Tracker\MSIS CATALOG SPREADSHEET - Sheet1 (2).csv"
+COURSE_CATALOG_FILE = "MSIS CATALOG SPREADSHEET - Sheet1 (2).csv"
 
 # Load course catalog
 if not os.path.exists(COURSE_CATALOG_FILE):
